@@ -14,6 +14,11 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+      - name: Pull latest changes from remote
+        run: |
+          git remote add huggingface https://huggingface.co/spaces/simranrashid/Search_engine_llm
+          git fetch huggingface main
+          git merge huggingface/main
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
